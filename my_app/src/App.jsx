@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import InputGroup2 from './component/Second';
+import InputGroup3 from './component/Third';
 
 function App() {
   const [input1, setInput1] = useState('');
@@ -19,7 +21,7 @@ function App() {
     setInput3(event.target.value);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setAllInputs(input1 + input2 + input3);
   }, [input1, input2, input3]);
 
@@ -29,21 +31,9 @@ function App() {
       <input type="text" value={input1} onChange={handleInput1Change} />
       <br /><br />
 
-      {input1 && (
-        <div>
-          <h2>Input 2:</h2>
-          <input type="text" value={input2} onChange={handleInput2Change} />
-          <br /><br />
-        </div>
-      )}
-
-      {(input1 && input2) && (
-        <div>
-          <h2>Input 3:</h2>
-          <input type="text" value={input3} onChange={handleInput3Change} />
-          <br /><br />
-        </div>
-      )}
+      <InputGroup2 input1={input1} input2={input2} setInput2={setInput2} />
+      
+      <InputGroup3 input1={input1} input2={input2} input3={input3} setInput3={setInput3} />
 
       <h2>All Inputs:</h2>
       <input type="text" value={allInputs} readOnly />

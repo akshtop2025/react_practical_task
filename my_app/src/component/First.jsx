@@ -1,11 +1,12 @@
-function Firstcom() {
+import React from 'react';
 
-    return(
-<>
-<input type="text" />
-</>
-    );
-    
+function InputField({ value, onChange }) {
+  return (
+    <div>
+      <input type="text" value={value} onChange={onChange} />
+      <br /><br />
+    </div>
+  );
 }
 
-export default Firstcom;
+export default InputField;
